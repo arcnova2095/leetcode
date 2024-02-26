@@ -3,10 +3,10 @@ class Solution:
         res=[]
         sub=[]
         def dfs(i, total):
-            if total ==target:
+            if total==target:
                 res.append(sub.copy())
                 return 
-            if i>= len(candidates) or total> target :
+            if len(candidates)<= i or target<total:
                 return 
             sub.append(candidates[i])
             dfs(i, total+candidates[i])
