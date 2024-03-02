@@ -4,5 +4,5 @@ class Solution:
         for i in nums:
             i= i*i
             output.append(i)
-        output.sort()
-        return output
+        
+        return sorted(output)
