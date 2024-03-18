@@ -3,12 +3,11 @@ class Solution:
         points.sort(key= lambda x:x[0])
         res=1
         end= points[0][1]
-        for i in points[1:]:
-            if i[0]>end:
-                res+=1
-                end= i[1]
-            else:
-                end= min(end,i[1])
+        for i in range(1,len(points)):
+            if points[i][0] > end:
+                res += 1
+                end = points[i][1]
+            end = min(points[i][1], end)
 
         return res
         
