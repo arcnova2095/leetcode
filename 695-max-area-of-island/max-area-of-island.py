@@ -1,22 +1,21 @@
 class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
-        Rows, Cols= len(grid), len(grid[0])
-        visited= set()
-        area=0
+        if not grid:
+            return 0
+        row= len(grid)
+        col= len(grid[0])
+        res=0
+        path=set()
         def dfs(r,c):
-            if (r>=Rows or r<0 or
-            c>=Cols or c<0 or
-            (r,c) in visited or
-            grid[r][c]==0):
+            if ( r not in range(row) or c not in range(col) or grid[r][c]==0 or (r,c) in path):
                 return 0
-            visited.add((r,c))
-            return 1+ dfs(r+1,c)+dfs(r-1,c)+dfs(r,c+1)+dfs(r,c-1)
+            path.add((r,c))
             
+            return 1 + dfs(r + 1, c) + dfs(r - 1, c) + dfs(r, c + 1) + dfs(r, c - 1)
 
-
-        for r in range(Rows):
-            for c in range(Cols):
-                area= max(dfs(r,c), area)
+        for r in range(row):
+            for c in range(col):
                     
-        return area
+                res= max(res,dfs(r,c))
+        return res
                     
