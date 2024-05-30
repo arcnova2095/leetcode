@@ -3,7 +3,7 @@ class Solution:
         res=[]
         sub=[]
         def dfs(i):
-            if i >= len(nums):
+            if i>= len(nums):
                 res.append(sub.copy())
                 return 
             sub.append(nums[i])
@@ -12,4 +12,3 @@ class Solution:
             dfs(i+1)
         dfs(0)
         return res
-            
