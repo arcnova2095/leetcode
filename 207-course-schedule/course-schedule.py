@@ -1,25 +1,27 @@
 class Solution:
     def canFinish(self, n: int, p: List[List[int]]) -> bool:
-        hm={i:[] for i in range(n)}
+        hm= {i: [] for i in range(n)}
 
-        for i, j in p:
-            hm[i].append(j)
-        visit=set()
+        for crs, pre in p:
+            hm[crs].append(pre)
+        visit= set()
+
         def dfs(crs):
             if crs in visit:
                 return False
             if hm[crs]==[]:
                 return True
             visit.add(crs)
-            for i in hm[crs]:
-            
-                if not dfs(i):
+
+            for pre in hm[crs]:
+                if not dfs(pre):
                     return False
             visit.remove(crs)
             hm[crs]=[]
             return True
-        for c in range(n):
-            if not dfs(c):
+
+        for i in range(n):
+            if not dfs(i):
                 return False
         return True
 
