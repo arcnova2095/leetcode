@@ -1,12 +1,12 @@
 class Solution:
-    def robber(self,nums):
+    def helper(self,n):
         a,b=0,0
-        for i in nums:
-            temp= max(a+i,b)
+        for i in n:
+            rob=max(a+i,b)
             a=b
-            b=temp
+            b= rob
         return b
+
     def rob(self, nums: List[int]) -> int:
-        return max(self.robber(nums[1:]),self.robber(nums[:-1]),nums[0])
-        
+        return max(self.helper(nums[1:]), self.helper(nums[:-1]),nums[0])
         
