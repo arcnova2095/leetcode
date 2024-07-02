@@ -1,15 +1,16 @@
 class Solution:
     def trap(self, h: List[int]) -> int:
-        i,j=0,len(h)-1
-        lm,rm= h[i],h[j]
+        l,r= 0,len(h)-1
+        lm,rm= h[l],h[r]
         res=0
-        while i<j:
+
+        while (l<r):
             if (lm<rm):
-                i+=1
-                lm= max(lm,h[i])
-                res+=lm-h[i]
+                l+=1
+                lm=max(lm,h[l])
+                res+= lm-h[l]
             else:
-                j-=1
-                rm= max(rm,h[j])
-                res+=rm-h[j]
+                r-=1
+                rm= max(rm,h[r])
+                res+=rm-h[r]
         return res
