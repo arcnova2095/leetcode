@@ -4,38 +4,25 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    
-
-
     def reorderList(self, head: Optional[ListNode]) -> None:
         """
         Do not return anything, modify head in-place instead.
         """
-        if not head:
-            return
-        
-        # Find the middle of the list
-        slow = fast = head
+        fast,slow= head.next,head
         while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-
-        # Reverse second half
-        prev, curr = None, slow
-        while curr:
-            next_node = curr.next
-            curr.next = prev
-            prev = curr
-            curr = next_node
-
-        # Merge two sorted linked lists
+            fast= fast.next.next
+            slow= slow.next
+        second = slow.next
+        prev = slow.next = None
+        while second:
+            tmp = second.next
+            second.next = prev
+            prev = second
+            second = tmp
+        
         first, second = head, prev
-        while second.next:
-            first.next, first = second, first.next
-            second.next, second = first, second.next
-
-        
-    
-
-
-        
+        while second:
+            tmp1, tmp2 = first.next, second.next
+            first.next = second
+            second.next = tmp1
+            first, second = tmp1, tmp2
