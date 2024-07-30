@@ -14,11 +14,11 @@ class Solution:
                 return copy[node]
             temp= Node(node.val)
             copy[node]= temp
-            for i in node.neighbors:
-                temp.neighbors.append(dfs(i))
+            for n in node.neighbors:
+                temp.neighbors.append(dfs(n))
             return temp
+        
         return dfs(node) if node else None
-            
             
 
 
