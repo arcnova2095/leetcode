@@ -3,15 +3,15 @@ class Solution:
         res=[]
         sub=[]
         def pal(l,r):
-            while l<=r:
+            while l<r:
                 if s[l]!= s[r]:
                     return False
                 l+=1
                 r-=1
             return True
         def dfs(i):
-            if i>= len(s):
-                res.append(sub.copy())
+            if i>=len(s):
+                res.append(sub[:])
                 return
             for j in range(i,len(s)):
                 if pal(i,j):
@@ -20,4 +20,5 @@ class Solution:
                     sub.pop()
         dfs(0)
         return res
+
         
