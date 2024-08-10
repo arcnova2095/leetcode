@@ -1,7 +1,7 @@
 class Solution:
-    def count(self,s,l,r):
+    def countPal(self,l,r,s):
         res=0
-        while l>=0 and r<len(s) and s[l]==s[r]:
+        while l >= 0 and r < len(s) and s[l] == s[r]:
             res+=1
             l-=1
             r+=1
@@ -9,7 +9,7 @@ class Solution:
     def countSubstrings(self, s: str) -> int:
         res=0
         for i in range(len(s)):
-            res+= self.count(s,i,i)
-            res+= self.count(s,i,i+1)
+            res+=self.countPal(i,i,s)
+            res+=self.countPal(i,i+1,s)
         return res
         
