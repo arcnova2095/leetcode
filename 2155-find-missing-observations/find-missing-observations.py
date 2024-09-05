@@ -12,5 +12,5 @@ class Solution:
             s-=x
             n-=1
         if (s):
-            arr[1]+=1
+            arr[0]+=1
         return arr
