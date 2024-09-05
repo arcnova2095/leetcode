@@ -1,16 +1,10 @@
 class Solution:
     def missingRolls(self, rolls: List[int], mean: int, n: int) -> List[int]:
-        s=mean*(n+len(rolls))
+        m=len(rolls)
+        sum_rolles=sum(rolls)
+        total=(n+m)*mean
+        miss=total-sum_rolles
+        if miss>6*n or miss<n: return []
+        q,r=divmod(miss, n)
+        return [q+1]*r+[q]*(n-r)
         
-        s-= sum(rolls)
-        arr=[]
-        while(n):
-            x=(math.floor(s/n))
-            if x>6 or x<1:
-                return []
-            arr.append(x)
-            s-=x
-            n-=1
-        if (s):
-            arr[0]+=1
-        return arr
