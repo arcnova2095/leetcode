@@ -13,13 +13,13 @@ class Solution:
             while q:
                 sub=[]
                 for i in range(len(q)):
-                    node= q.popleft()
-                    sub.append(node.val)
-                    if node.left:
-                        q.append(node.left)
-                    if node.right:
-                        q.append(node.right)
-                res.append(sub)
+                    x=q.popleft()
+                    sub.append(x.val)
+                    if x.left:
+                        q.append(x.left)
+                    if x.right:
+                        q.append(x.right)
+                res.append(sub[:])
             return res
 
 
