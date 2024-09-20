@@ -8,7 +8,7 @@ class Solution:
         for i in range(len(w2)-1,-1,-1):
             for j in range(len(w1)-1,-1,-1):
                 if w2[i]==w1[j]:
-                    dp[i][j]=dp[i+1][j+1]
+                    dp[i][j]= dp[i+1][j+1]
                 else:
                     dp[i][j]= 1+ min(dp[i+1][j+1],dp[i+1][j],dp[i][j+1])
         return dp[0][0]
