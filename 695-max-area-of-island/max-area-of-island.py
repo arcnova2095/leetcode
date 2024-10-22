@@ -1,19 +1,17 @@
 class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
-        res=0
-        visit= set()
-        row,col= len(grid), len(grid[0])
+        area=0
+        row,col=len(grid), len(grid[0])
 
-        def dfs(r,c):
-            if r not in range(row) or c not in range(col) or (r,c) in visit or grid[r][c]==0:
-                return 0
-            visit.add((r,c))
-            return 1+ dfs(r+1,c)+ dfs(r-1,c)+dfs(r,c+1)+dfs(r,c-1)
-        
+        path=set()
+        def dfs(i,j):
+            if i not in range(row) or j not in range(col) or (i,j) in path or grid[i][j]==0:
+                return 0 
+            path.add((i,j))
+            res=1+dfs(i,j+1) +dfs(i+1,j)+ dfs(i,j-1)+dfs(i-1,j)
+            return res
         for r in range(row):
             for c in range(col):
-                res= max(dfs(r,c),res)
-        return res
-            
-
-    
+                if ((r,c)) not in path and grid[r][c]==1:
+                    area= max(area, dfs(r,c))
+        return area
