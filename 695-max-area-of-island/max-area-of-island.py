@@ -12,6 +12,5 @@ class Solution:
             return res
         for r in range(row):
             for c in range(col):
-                if ((r,c)) not in path and grid[r][c]==1:
-                    area= max(area, dfs(r,c))
+                area= max(area, dfs(r,c))
         return area
