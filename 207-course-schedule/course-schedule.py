@@ -4,20 +4,21 @@ class Solution:
         for crs, pre in prerequisites:
             hm[crs].append(pre)
         path= set()
-
-        def dfs(i):
-            if i in path:
+        def dfs(crs):
+            if crs in path:
                 return False
-            if hm[i]==[]:
+            if hm[crs]==[]:
                 return True
-            path.add(i) 
-            for pre in hm[i]:
-                if not dfs(pre):
+            path.add(crs)
+            for i in hm[crs]:
+                if not dfs(i):
                     return False
-            path.remove(i)
-            hm[i]=[]
+            path.remove(crs)
+            hm[crs]=[]
             return True
-        for c in range(numCourses):
-            if not dfs(c):
+        for i in range(numCourses):
+            if not dfs(i):
                 return False
         return True
+
+
